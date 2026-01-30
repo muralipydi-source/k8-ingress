@@ -26,6 +26,8 @@ spec:
       containers:
       - name: app2
         image: muralikrishnapydi/app2:v1
+        ports:
+        - containerPort: 80   # 🔴 REQUIRED
 ---
 apiVersion: v1
 kind: Service
@@ -36,11 +38,12 @@ metadata:
     project: roboshop
     app: app2
 spec:
-  selector:
+   type: ClusterIP           # 🔴 IMPORTANT
+   selector:
     purpose: ingress
     project: roboshop
     app: app2
-  ports:
+   ports:
     - protocol: TCP
       port: 80 # service port
       targetPort: 80 # container port
@@ -55,6 +58,12 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/group.name: muralikrishnapydi
+    
+     # 🔴 THESE FIX TARGET GROUP ASSOCIATION
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/healthcheck-port: traffic-port
+    alb.ingress.kubernetes.io/success-codes: "200-399"
+
 spec:
   ingressClassName: alb
   rules:
