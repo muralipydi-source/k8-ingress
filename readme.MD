@@ -5,7 +5,7 @@ trust and authentication provider
 
 REGION_CODE=us-east-1
 CLUSTER_NAME=roboshop-dev
-ACC_ID=315069654700
+ACC_ID=898080060887     ####### ACC_ID=315069654700
 ```
 eksctl utils associate-iam-oidc-provider \
     --region $REGION_CODE \
@@ -38,8 +38,15 @@ eksctl create iamserviceaccount \
 --region $REGION_CODE \
 --approve
 ```
-
+#### --attach-policy-arn=arn:aws:iam::$ACC_ID:policy/AWSLoadBalancerControllerIAMPolicy
 ### Install Load balancer controller drivers
+------------------
+Helm installation
+
+curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+helm version
+..............................................
 
 ```
 helm repo add eks https://aws.github.io/eks-charts
