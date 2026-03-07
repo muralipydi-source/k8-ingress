@@ -50,8 +50,8 @@ kind: Ingress
 metadata:
   name: app1
   annotations:
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:898080060887:certificate/c21942cd-4ef4-4dcd-b295-4dea8381e72d #arn:aws:acm:us-east-1:315069654700:certificate/806e53c3-3894-49ff-96c7-fbd7c3b753ff
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:898080060887:certificate/ab8e5170-a63a-4f4f-8795-c7af5ee62720 #arn:aws:acm:us-east-1:315069654700:certificate/806e53c3-3894-49ff-96c7-fbd7c3b753ff
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/group.name: muralikrishnapydi
